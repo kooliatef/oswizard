@@ -1,0 +1,7 @@
+parameters:
+#    oswizard_forum.example.class: oswizard\ForumBundle\Example
+
+services:
+#    oswizard_forum.example:
+#        class: %oswizard_forum.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

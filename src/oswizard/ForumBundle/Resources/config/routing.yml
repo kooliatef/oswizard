@@ -1,0 +1,24 @@
+
+oswizardforum_welcome:
+    path: /
+    defaults: { _controller: oswizardForumBundle:Forum:index }
+    
+oswizardforum_showSection:
+    path: /section/{idSection}
+    defaults: { _controller: oswizardForumBundle:Forum:showSection }
+    requirements:
+        idSection: \d+
+        
+oswizardforum_showPost:
+    path: /section/post/{idPost}
+    defaults: { _controller: oswizardForumBundle:Forum:showPost }
+    requirements:
+        idPost: \d+
+        
+oswizardforum_addSection:
+    path: /section
+    defaults: { _controller: oswizardForumBundle:Forum:addSection }
+    
+oswizardforum_addPost:
+    path: /section/post
+    defaults: { _controller: oswizardForumBundle:Forum:addPost }

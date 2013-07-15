@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forum</title>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <ul>
+            {% for section in sections %}
+                <li>
+                    <a href="{{path('oswizardforum_showSection', {'idSection':section.id})}}">{{section.name}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ path('oswizardforum_addSection')}}">add section</a>
+        </body>
+    </html>

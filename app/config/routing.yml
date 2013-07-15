@@ -1,0 +1,4 @@
+oswizard_forum:
+    resource: "@oswizardForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forum</title>
+    </head>
+    <body>
+    {% for post in posts %}
+        <h1>{{post.title}}</h1>
+        <h3>{{post.User.username}}</h3>
+        <h3>{{post.section.name}}</h3>
+        <i>{{post.date|date("Y/m/d")}}</i>
+        <p>{{post.content}}</p><br />
+    {% endfor %}
+    </body>
+</html> 

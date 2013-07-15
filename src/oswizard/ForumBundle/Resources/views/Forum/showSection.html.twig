@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forum</title>
+    </head>
+    <body>
+        <h1>Section: {{section.name}}</h1>
+        <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{path('oswizardforum_showPost', {'idPost':post.id})}}">{{post.title}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+
+        <a href="{{ path('oswizardforum_addPost', {'idSection':section.id}) }}">add post</a>
+    </body>
+</html>
