@@ -14,7 +14,8 @@ class ForumController extends Controller {
         $repository = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Section');
-        $sections = $repository->findAll();
+        $service = $this->get('oswizard_forum.service');
+        $sections = $service->findAllSections();
         return $this->render('oswizardForumBundle:Forum:index.html.twig', array('sections' => $sections));
     }
 

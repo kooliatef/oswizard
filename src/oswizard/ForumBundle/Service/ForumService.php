@@ -3,7 +3,7 @@
 namespace oswizard\ForumBundle\Service;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
-class Service {
+class ForumService {
 
     /**
      *
@@ -26,28 +26,28 @@ class Service {
         return $repository->findAll();
     }
 
-    public function findSection($forumController, $idSection) {
-        $repository = $forumController->getDoctrine()
+    public function findSection($idSection) {
+        $repository = $this->container->getDoctrine()
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Section');
         return $repository->find($idSection);
     }
 
-    public function addSection($forumController, $section) {
-        $em = $forumController->getDoctrine()->getManager();
+    public function addSection($section) {
+        $em = $this->container->getDoctrine()->getManager();
         $em->persist($section);
         $em->flush();
     }
 
-    public function findPost($forumController, $idPost) {
-        $repository = $forumController->getDoctrine()
+    public function findPost($idPost) {
+        $repository = $this->container->getDoctrine()
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Post');
         return $repository->find($idPost);
     }
 
-    public function findPostsBySection($forumController, $section) {
-        $repository = $forumController->getDoctrine()
+    public function findPostsBySection($section) {
+        $repository = $this->container->getDoctrine()
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Post');
         return $repository->findBy(array(
