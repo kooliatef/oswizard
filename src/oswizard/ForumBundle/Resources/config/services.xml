@@ -1,0 +1,9 @@
+<parametres>
+    
+</parametres>
+
+<services>
+    <service id="oswizard_forum.service"
+             class="oswizard\ForumBundle\Service\Service">
+    </service>
+</services>
