@@ -4,8 +4,22 @@ namespace oswizard\ForumBundle\Service;
 
 class Service {
 
-    public function findAllSections($forumController) {
-        $repository = $forumController->getDoctrine()
+    /**
+     *
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface 
+     */
+    protected $container;
+    
+    /**
+     * @param Container $container
+     */
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
+    
+    public function findAllSections() {
+        $repository = $this->container->getDoctrine()
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Section');
         return $repository->findAll();

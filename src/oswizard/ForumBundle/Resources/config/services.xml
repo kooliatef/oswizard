@@ -1,9 +1,5 @@
-<parametres>
-    
-</parametres>
-
 <services>
-    <service id="oswizard_forum.service"
-             class="oswizard\ForumBundle\Service\Service">
+    <service id="oswizard_forum.service" class="oswizard\ForumBundle\Service\Service">
+        <argument type="service" id="service_container"/>
     </service>
 </services>
