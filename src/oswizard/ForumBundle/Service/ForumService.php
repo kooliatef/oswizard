@@ -1,6 +1,7 @@
 <?php
 
 namespace oswizard\ForumBundle\Service;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class Service {
 
