@@ -11,9 +11,6 @@ use oswizard\ForumBundle\Form\SectionType;
 class ForumController extends Controller {
 
     public function indexAction() {
-        $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('oswizardForumBundle:Section');
         $service = $this->get('oswizard_forum.service');
         $sections = $service->findAllSections();
         return $this->render('oswizardForumBundle:Forum:index.html.twig', array('sections' => $sections));
