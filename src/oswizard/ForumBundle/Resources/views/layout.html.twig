@@ -1,0 +1,15 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+Forum
+{% endblock %}
+
+{% block subtitle %}
+    {{parent()}}-forum
+{% endblock %}
+
+{% block body %}
+    <hr>
+    {% block forum_body %}
+    {% endblock %}
+{% endblock %}

@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Forum</title>
-    </head>
-    <body>
-    {% for post in posts %}
-        <h1>{{post.title}}</h1>
-        <h3>{{post.User.username}}</h3>
-        <h3>{{post.section.name}}</h3>
-        <i>{{post.date|date("Y/m/d")}}</i>
-        <p>{{post.content}}</p><br />
-    {% endfor %}
-    </body>
-</html> 
+{% extends "oswizard ForumBundle::layout.html.twig" %}
+
+{% block title %}
+{{post.title}}
+{% endblock %}
+
+{% block subtitle %}
+{{parent()}}-{{post.title}}
+{% endblock %}
+
+{% block forum_body %}
+<div>
+    <h3>{{post.title}}</h3>
+    <h5>{{post.User.username}}</h5>
+    <h5>{{post.section.name}}</h5>
+    <i>{{post.date|date("Y/m/d")}}</i>
+    <p>{{post.content}}</p><br />
+</div>
+{% endblock %}

@@ -20,34 +20,34 @@ class ForumService {
     }
     
     public function findAllSections() {
-        $repository = $this->container->getDoctrine()
+        $repository = $this->container->get('doctrine')
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Section');
         return $repository->findAll();
     }
 
     public function findSection($idSection) {
-        $repository = $this->container->getDoctrine()
+        $repository = $this->container->get('doctrine')
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Section');
         return $repository->find($idSection);
     }
 
     public function addSection($section) {
-        $em = $this->container->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine')->getManager();
         $em->persist($section);
         $em->flush();
     }
 
     public function findPost($idPost) {
-        $repository = $this->container->getDoctrine()
+        $repository = $this->container->get('doctrine')
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Post');
         return $repository->find($idPost);
     }
 
     public function findPostsBySection($section) {
-        $repository = $this->container->getDoctrine()
+        $repository = $this->container->get('doctrine')
                 ->getManager()
                 ->getRepository('oswizardForumBundle:Post');
         return $repository->findBy(array(

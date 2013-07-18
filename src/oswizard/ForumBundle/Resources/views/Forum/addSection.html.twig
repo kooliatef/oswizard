@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Forum</title>
-    </head>
-    <body>
-        <h1>Add section</h1>
-        <div class="well">
-            <form method="post" {{form_enctype(form)}}>
-                {{form_widget(form)}}
-                <input type="submit" value="OK" />
-            </form>
-        </div>
+{% extends "oswizardForumBundle::layout.html.twig" %}
 
-    </body>
-</html>
+{% block title %}Add section{% endblock %}
+
+{% block subtitle %}
+{{parent()}}-add section
+{% endblock %}
+
+{% block forum_body %}
+{% include "oswizardForumBundle:Forum:formSection.html.twig" %}
+{% endblock %}
+

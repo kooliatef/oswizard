@@ -17,14 +17,9 @@ class ForumController extends Controller {
     }
 
     public function showSectionAction($idSection) {
-        $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('oswizardForumBundle:Section');
-        $section = $repository->find($idSection);
-        $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('oswizardForumBundle:Post');
-        $posts = $repository->findBy(array(
+        $service = $this->get('oswizard_forum.service');
+        $section = $service->findSection($idSection);
+        $posts = $service->findPostsBySection(array(
             'section' => $section
         ));
         return $this->render('oswizardForumBundle:Forum:showSection.html.twig', array(
@@ -33,25 +28,22 @@ class ForumController extends Controller {
     }
 
     public function showPostAction($idPost) {
-        $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('oswizardForumBundle:Post');
-        $posts = $repository->findAll();
+        $service = $this->get('oswizard_forum.service');
+        $post = $service->findPost($idPost);
         return $this->render('oswizardForumBundle:Forum:showPost.html.twig', array(
-                    'posts' => $posts)
+                    'post' => $post)
         );
     }
 
     public function addSectionAction() {
+        $service = $this->get('oswizard_forum.service');
         $section = new Section();
         $form = $this->createForm(new SectionType(), $section);
         $request = $this->getRequest();
         if ($request->getMethod() == "POST") {
             $form->bind($request);
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($section);
-                $em->flush();
+                $service->addSection($section);
                 return $this->render('oswizardForumBundle:Forum:showSection.html.twig', array(
                             'section' => $section)
                 );
