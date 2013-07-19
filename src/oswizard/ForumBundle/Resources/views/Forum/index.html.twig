@@ -11,13 +11,13 @@
 <ul>
     {% for section in sections %}
     <li>
-        <a href="{{path('oswizardforum_showSection', {'idSection':section.id})}}">{{section.name}}</a>
+        <a href="{{path('oswizard_forum_show_section', {'idSection':section.id})}}">{{section.name}}</a>
     </li>
     {% else %}
     <li>No sections to show</li>
     {% endfor %}
 </ul>
-<a href="{{ path('oswizardforum_addSection')}}" class="btn">
+<a href="{{ path('oswizard_forum_add_section')}}" class="btn">
     add section
 </a>
 {% endblock %}

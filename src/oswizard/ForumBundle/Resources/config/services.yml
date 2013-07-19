@@ -1,4 +1,4 @@
 services:
-    oswizard_forum.service:
+    oswizard.forum.forum:
         class: oswizard\ForumBundle\Service\ForumService
         arguments: [@service_container]

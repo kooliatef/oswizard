@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block subtitle %}
-{{parent()}}-{{section.name}}
+{{parent()}}- {{section.name}}
 {% endblock %}
 
 {% block forum_body %}
 <ul>
     {% for post in posts %}
     <li>
-        <a href="{{path('oswizardforum_showPost', {'idPost':post.id})}}">{{post.title}}</a>
+        <a href="{{path('oswizard_forum_show_post', {'idPost':post.id})}}">{{post.title}}</a>
     </li>
     {% else %} <li>No posts to show</li>
     {% endfor %}
 </ul>
-<a href="{{ path('oswizardforum_addPost', {'idSection':section.id}) }}" class="btn">
+<a href="{{ path('oswizard_forum_add_post', {'idSection':section.id}) }}" class="btn">
     add post
 </a>
 {% endblock %}

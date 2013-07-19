@@ -1,24 +1,26 @@
 
-oswizardforum_welcome:
+oswizard_forum_welcome:
     path: /
     defaults: { _controller: oswizardForumBundle:Forum:index }
     
-oswizardforum_showSection:
+oswizard_forum_show_section:
     path: /section/{idSection}
     defaults: { _controller: oswizardForumBundle:Forum:showSection }
     requirements:
         idSection: \d+
         
-oswizardforum_showPost:
+oswizard_forum_show_post:
     path: /section/post/{idPost}
     defaults: { _controller: oswizardForumBundle:Forum:showPost }
     requirements:
         idPost: \d+
         
-oswizardforum_addSection:
+oswizard_forum_add_section:
     path: /section
     defaults: { _controller: oswizardForumBundle:Forum:addSection }
     
-oswizardforum_addPost:
-    path: /section/post
+oswizard_forum_add_post:
+    path: /section/post/{idSection}
     defaults: { _controller: oswizardForumBundle:Forum:addPost }
+    requirements:
+        idSection: \d+

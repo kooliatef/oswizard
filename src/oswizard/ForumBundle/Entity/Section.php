@@ -28,7 +28,8 @@ class Section
      */
     private $name;
 
-
+    public function __construct() {
+    }
 
     /**
      * Get id

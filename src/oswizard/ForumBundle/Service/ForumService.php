@@ -1,6 +1,7 @@
 <?php
 
 namespace oswizard\ForumBundle\Service;
+
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class ForumService {
@@ -10,15 +11,14 @@ class ForumService {
      * @var \Symfony\Component\DependencyInjection\ContainerInterface 
      */
     protected $container;
-    
+
     /**
      * @param Container $container
      */
-    public function __construct(Container $container)
-    {
+    public function __construct(Container $container) {
         $this->container = $container;
     }
-    
+
     public function findAllSections() {
         $repository = $this->container->get('doctrine')
                 ->getManager()
@@ -46,6 +46,12 @@ class ForumService {
         return $repository->find($idPost);
     }
 
+    public function addPost($post) {
+        $em = $this->container->get('doctrine')->getManager();
+        $em->persist($post);
+        $em->flush();
+    }
+
     public function findPostsBySection($section) {
         $repository = $this->container->get('doctrine')
                 ->getManager()
@@ -53,6 +59,13 @@ class ForumService {
         return $repository->findBy(array(
                     'section' => $section
                 ));
+    }
+
+    public function findUser($idUser) {
+        $repository = $this->container->get('doctrine')
+                ->getManager()
+                ->getRepository('oswizardForumBundle:User');
+        return $repository->find($idUser);
     }
 
 }

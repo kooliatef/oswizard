@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="oswizard\ForumBundle\Repository\GroupRepository")
  */
-class Post
-{
+class Post {
+
     /**
      * @var integer
      *
@@ -73,7 +73,10 @@ class Post
      */
     private $user;
 
-
+    public function __construct() {
+        $this->approved = TRUE;
+        $this->date = new \DateTime();
+    }
 
     /**
      * Set id
@@ -81,10 +84,9 @@ class Post
      * @param integer $id
      * @return Post
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -93,8 +95,7 @@ class Post
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -104,10 +105,9 @@ class Post
      * @param string $title
      * @return Post
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
-    
+
         return $this;
     }
 
@@ -116,8 +116,7 @@ class Post
      *
      * @return string 
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -127,10 +126,9 @@ class Post
      * @param string $content
      * @return Post
      */
-    public function setContent($content)
-    {
+    public function setContent($content) {
         $this->content = $content;
-    
+
         return $this;
     }
 
@@ -139,8 +137,7 @@ class Post
      *
      * @return string 
      */
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
@@ -150,10 +147,9 @@ class Post
      * @param \DateTime $date
      * @return Post
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -162,8 +158,7 @@ class Post
      *
      * @return \DateTime 
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -173,10 +168,9 @@ class Post
      * @param boolean $approved
      * @return Post
      */
-    public function setApproved($approved)
-    {
+    public function setApproved($approved) {
         $this->approved = $approved;
-    
+
         return $this;
     }
 
@@ -185,8 +179,7 @@ class Post
      *
      * @return boolean 
      */
-    public function getApproved()
-    {
+    public function getApproved() {
         return $this->approved;
     }
 
@@ -196,10 +189,9 @@ class Post
      * @param \oswizard\ForumBundle\Entity\Section $section
      * @return Post
      */
-    public function setSection(\oswizard\ForumBundle\Entity\Section $section)
-    {
+    public function setSection(\oswizard\ForumBundle\Entity\Section $section) {
         $this->section = $section;
-    
+
         return $this;
     }
 
@@ -208,8 +200,7 @@ class Post
      *
      * @return \oswizard\ForumBundle\Entity\Section 
      */
-    public function getSection()
-    {
+    public function getSection() {
         return $this->section;
     }
 
@@ -219,10 +210,9 @@ class Post
      * @param \oswizard\ForumBundle\Entity\User $user
      * @return Post
      */
-    public function setUser(\oswizard\ForumBundle\Entity\User $user)
-    {
+    public function setUser(\oswizard\ForumBundle\Entity\User $user) {
         $this->user = $user;
-    
+
         return $this;
     }
 
@@ -231,8 +221,8 @@ class Post
      *
      * @return \oswizard\ForumBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }
