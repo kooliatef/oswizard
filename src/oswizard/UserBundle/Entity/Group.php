@@ -1,6 +1,6 @@
 <?php
 
-namespace oswizard\ForumBundle\Entity;
+namespace oswizard\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

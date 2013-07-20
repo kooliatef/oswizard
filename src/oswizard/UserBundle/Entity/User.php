@@ -1,8 +1,9 @@
 <?php
 
-namespace oswizard\ForumBundle\Entity;
+namespace oswizard\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="oswizard\ForumBundle\Repository\GroupRepository")
  */
-class User
-{
+class User implements UserInterface{
+
     /**
      * @var integer
      *
@@ -57,6 +58,16 @@ class User
     private $picture;
 
     /**
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+
+    /**
+     * @ORM\Column(name="roles", type="array", nullable=true)
+     */
+    private $roles;
+
+    /**
      * @var \Group
      *
      * @ORM\Id
@@ -68,7 +79,9 @@ class User
      */
     private $group;
 
-
+    public function __construct() {
+        $this->roles = array();
+    }
 
     /**
      * Set id
@@ -76,10 +89,9 @@ class User
      * @param integer $id
      * @return User
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -88,8 +100,7 @@ class User
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -99,10 +110,9 @@ class User
      * @param string $username
      * @return User
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
-    
+
         return $this;
     }
 
@@ -111,8 +121,7 @@ class User
      *
      * @return string 
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -122,10 +131,9 @@ class User
      * @param string $email
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -134,8 +142,7 @@ class User
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -145,10 +152,9 @@ class User
      * @param string $password
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -157,8 +163,7 @@ class User
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -168,10 +173,9 @@ class User
      * @param \DateTime $joinDate
      * @return User
      */
-    public function setJoinDate($joinDate)
-    {
+    public function setJoinDate($joinDate) {
         $this->joinDate = $joinDate;
-    
+
         return $this;
     }
 
@@ -180,8 +184,7 @@ class User
      *
      * @return \DateTime 
      */
-    public function getJoinDate()
-    {
+    public function getJoinDate() {
         return $this->joinDate;
     }
 
@@ -191,10 +194,9 @@ class User
      * @param string $picture
      * @return User
      */
-    public function setPicture($picture)
-    {
+    public function setPicture($picture) {
         $this->picture = $picture;
-    
+
         return $this;
     }
 
@@ -203,8 +205,7 @@ class User
      *
      * @return string 
      */
-    public function getPicture()
-    {
+    public function getPicture() {
         return $this->picture;
     }
 
@@ -214,10 +215,9 @@ class User
      * @param \oswizard\ForumBundle\Entity\Group $group
      * @return User
      */
-    public function setGroup(\oswizard\ForumBundle\Entity\Group $group)
-    {
+    public function setGroup(\oswizard\ForumBundle\Entity\Group $group) {
         $this->group = $group;
-    
+
         return $this;
     }
 
@@ -226,8 +226,30 @@ class User
      *
      * @return \oswizard\ForumBundle\Entity\Group 
      */
-    public function getGroup()
-    {
+    public function getGroup() {
         return $this->group;
     }
+
+    public function setSalt($salt) {
+        $this->salt = $salt;
+        return $this;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+
+    public function setRoles(array $roles) {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function getRoles() {
+        return $this->roles;
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
 }

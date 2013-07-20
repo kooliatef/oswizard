@@ -1,0 +1,7 @@
+parameters:
+#    oswizard_user.example.class: oswizard\UserBundle\Example
+
+services:
+#    oswizard_user.example:
+#        class: %oswizard_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

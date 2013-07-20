@@ -17,7 +17,9 @@
     <li>No sections to show</li>
     {% endfor %}
 </ul>
+{% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('oswizard_forum_add_section')}}" class="btn">
     add section
 </a>
+{% endif %}
 {% endblock %}

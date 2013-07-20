@@ -8,6 +8,7 @@ use oswizard\ForumBundle\Entity\Section;
 use oswizard\ForumBundle\Entity\Post;
 use oswizard\ForumBundle\Form\SectionType;
 use oswizard\ForumBundle\Form\PostType;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class ForumController extends Controller {
 
@@ -22,7 +23,7 @@ class ForumController extends Controller {
         $section = $service->findSection($idSection);
         $posts = $service->findPostsBySection(array(
             'section' => $section
-        ));
+                ));
         return $this->render('oswizardForumBundle:Forum:showSection.html.twig', array(
                     'section' => $section, 'posts' => $posts)
         );
@@ -46,8 +47,8 @@ class ForumController extends Controller {
                 $service = $this->get('oswizard.forum.forum');
                 $service->addSection($section);
                 return $this->redirect($this->generateUrl('oswizard_forum_show_section', array(
-                    'idSection' => $section->getId()
-                )));
+                                    'idSection' => $section->getId()
+                                )));
             }
         }
         return $this->render('oswizardForumBundle:Forum:addSection.html.twig', array(
@@ -67,13 +68,13 @@ class ForumController extends Controller {
                 $post->setSection($service->findSection($idSection));
                 $service->addPost($post);
                 return $this->redirect($this->generateUrl('oswizard_forum_show_post', array(
-                    'idPost' => $post->getId()
-                )));
+                                    'idPost' => $post->getId()
+                                )));
             }
         }
         return $this->render('oswizardForumBundle:Forum:addPost.html.twig', array(
-            'form' => $form->createView()
-        ));
+                    'form' => $form->createView()
+                ));
     }
 
 }

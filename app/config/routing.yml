@@ -1,4 +1,14 @@
 oswizard_forum:
     resource: "@oswizardForumBundle/Resources/config/routing.yml"
     prefix:   /forum
+    
+login:
+    pattern:  /login
+    defaults: { _controller: oswizardUserBundle:Security:login }
+    
+login_check:
+    pattern: /login_check
+    
+logout:
+    pattern: /logout
 
